@@ -1,0 +1,17 @@
+protecno\adminBundle\Entity\categorias:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        descripcion:
+            type: string
+            length: '60'
+        action:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -1,0 +1,14 @@
+protecno\adminBundle\Entity\marca:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        descripcion:
+            type: string
+            length: '60'
+    lifecycleCallbacks: {  }
