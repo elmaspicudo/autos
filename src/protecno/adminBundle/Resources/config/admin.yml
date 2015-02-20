@@ -1,5 +1,5 @@
 services:
-    sonata.admin.post:
+    sonata.admin.marca:
         class: protecno\adminBundle\admin\marcaAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Marcas" }
@@ -19,13 +19,23 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [adminBundle]]
-    sonata.admin.categoria:
-        class: protecno\adminBundle\admin\autoAdmin
+    sonata.admin.auto:
+        class: protecno\adminBundle\admin\PostAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Vehiculos" }
         arguments:
             - ~
             - protecno\adminBundle\Entity\auto
+            - ~
+        calls:
+            - [ setTranslationDomain, [adminBundle]]
+    sonata.admin.slider:
+        class: protecno\adminBundle\admin\sliderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Slider" }
+        arguments:
+            - ~
+            - protecno\adminBundle\Entity\slider
             - ~
         calls:
             - [ setTranslationDomain, [adminBundle]]

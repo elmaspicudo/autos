@@ -47,15 +47,27 @@ protecno\adminBundle\Entity\auto:
         precio:
             type: string
             length: '20'
+        precio_anterior:
+            type: string
+            length: '20'
+            nullable:     true
+        rebaja:
+            type: boolean  
+            nullable:     true          
         gastosReparacion:
             type: string
             length: '20'
         observaciones:
             type: text
+    oneToMany:
+        imagen_dos:
+            targetEntity: protecno\adminBundle\Entity\slider
+            mappedBy: auto
+            cascade: ["persist"]
     manyToOne:
-        parent:
+        marca:
             targetEntity: protecno\adminBundle\Entity\marca
-            inversedBy: auto
+            inversedBy: auto                
     manyToMany:
         categoria:
           targetEntity: protecno\adminBundle\Entity\categorias
