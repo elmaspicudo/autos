@@ -1,0 +1,100 @@
+{% extends 'AppBundle:pagina:index.html.twig' %}
+{% block body %}
+<div class="container">
+		<div id="content2">
+			
+			<div class="row">
+				<div class="col-sm-7">
+					<div class="beta-slider">							
+						<div class="beta-slider-items">
+							<img src="{{ asset('bundles/app/dest/images/blog/img_2.jpg')}}" alt="">
+							<img src="{{ asset('bundles/app/dest/images/blog/img_3.jpg')}}" alt="">
+							<img src="{{ asset('bundles/app/dest/images/blog/img_4.jpg')}}" alt="">
+							<img src="{{ asset('bundles/app/dest/images/blog/img_2.jpg')}}" alt="">
+							
+						</div>
+						
+						<div class="text-center">
+							<div class="beta-pager-gallery port-gallery">
+							  <a data-slide-index="0" href=""><img src="{{ asset('bundles/app/dest/images/blog/img_2.jpg')}}" alt="" /></a>
+							  <a data-slide-index="1" href=""><img src="{{ asset('bundles/app/dest/images/blog/img_3.jpg')}}" alt="" /></a>
+							  <a data-slide-index="2" href=""><img src="{{ asset('bundles/app/dest/images/blog/img_4.jpg')}}" alt="" /></a>
+							  <a data-slide-index="3" href=""><img src="{{ asset('bundles/app/dest/images/blog/img_2.jpg')}}" alt="" /></a>
+							
+							</div>
+						</div>
+					</div>
+				
+				</div>
+				<div class="col-sm-5">
+					<h5>Titulo producto</h5>
+					<p>texto texto texto, texto texto texto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto texto.</p>
+					<div class="space10">&nbsp;</div>
+					<p>texto texto texto, texto texto texto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto textotexto texto . </p>
+					<div class="space20">&nbsp;</div>
+					<h5>Detalles</h5>
+					<table class="table portfolio-table">
+						<tr>
+							<th>Marca:</th>
+							<td>marca</td>
+						</tr>
+						<tr>
+							<th>Modelo:</th>
+							<td>modelo</td>
+						</tr>
+						<tr>
+							<th>Precio:</th>
+							<td>1234</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="space70">&nbsp;</div>
+
+			<h2>Productos relacionados</h2>
+			<div class="space30">&nbsp;</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="work-item beta-related-port">
+					<div class="work-item-over">
+						<p class="work-item-actions">
+							<a class="colorbox" href="{{ asset('bundles/app/dest/images/related/1.jpg')}}"><i class="fa fa-search"></i></a>
+							<a href="portfolio_single.html"><i class="fa fa-link"></i></a>
+						</p>
+					</div>
+					<img src="{{ asset('bundles/app/dest/images/related/1.jpg')}}" alt="">
+					</div>
+					<div class="space20">&nbsp;</div>
+					<h5 class="other-title"><a href="portfolio_single.html#">texto texto texto, texto texto texto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto.</a></h5>
+				</div>
+				<div class="col-sm-4">
+					<div class="work-item beta-related-port">
+					<div class="work-item-over">
+						<p class="work-item-actions">
+							<a class="colorbox" href="{{ asset('bundles/app/dest/images/related/2.jpg')}}"><i class="fa fa-search"></i></a>
+							<a href="portfolio_single.html"><i class="fa fa-link"></i></a>
+						</p>
+					</div>
+					<img src="{{ asset('bundles/app/dest/images/related/2.jpg')}}" alt="">
+					</div>
+					<div class="space20">&nbsp;</div>
+					<h5 class="other-title"><a href="portfolio_single.html#">texto texto texto, texto texto texto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto.</a></h5>
+				</div>
+				<div class="col-sm-4">
+				    <div class="work-item beta-related-port">
+					<div class="work-item-over">
+						<p class="work-item-actions">
+							<a class="colorbox" href="{{ asset('bundles/app/dest/images/related/3.jpg')}}"><i class="fa fa-search"></i></a>
+							<a href="portfolio_single.html"><i class="fa fa-link"></i></a>
+						</p>
+					</div>
+					<img src="{{ asset('bundles/app/dest/images/related/3.jpg')}}" alt="">
+					</div>
+					<div class="space20">&nbsp;</div>	
+					<h5 class="other-title"><a href="portfolio_single.html#">texto texto texto, texto texto texto texto texto, texto textotexto texto texto, texto textotexto texto texto, texto.</a></h5>
+				</div>
+			</div>
+		</div> <!-- #content -->
+	</div> <!-- .container -->
+
+	{% endblock %}
