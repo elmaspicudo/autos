@@ -444,4 +444,240 @@ class auto
     {
         return $this->observaciones;
     }
+    /**
+     * @var \protecno\adminBundle\Entity\marca
+     */
+    private $parent;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $categoria;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categoria = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \protecno\adminBundle\Entity\marca $parent
+     * @return auto
+     */
+    public function setParent(\protecno\adminBundle\Entity\marca $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \protecno\adminBundle\Entity\marca 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Add categoria
+     *
+     * @param \protecno\adminBundle\Entity\categorias $categoria
+     * @return auto
+     */
+    public function addCategorium(\protecno\adminBundle\Entity\categorias $categoria)
+    {
+        $this->categoria[] = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Remove categoria
+     *
+     * @param \protecno\adminBundle\Entity\categorias $categoria
+     */
+    public function removeCategorium(\protecno\adminBundle\Entity\categorias $categoria)
+    {
+        $this->categoria->removeElement($categoria);
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+    /**
+     * @var string
+     */
+    private $precio_anterior;
+
+    /**
+     * @var boolean
+     */
+    private $rebaja;
+
+
+    /**
+     * Set precio_anterior
+     *
+     * @param string $precioAnterior
+     * @return auto
+     */
+    public function setPrecioAnterior($precioAnterior)
+    {
+        $this->precio_anterior = $precioAnterior;
+
+        return $this;
+    }
+
+    /**
+     * Get precio_anterior
+     *
+     * @return string 
+     */
+    public function getPrecioAnterior()
+    {
+        return $this->precio_anterior;
+    }
+
+    /**
+     * Set rebaja
+     *
+     * @param boolean $rebaja
+     * @return auto
+     */
+    public function setRebaja($rebaja)
+    {
+        $this->rebaja = $rebaja;
+
+        return $this;
+    }
+
+    /**
+     * Get rebaja
+     *
+     * @return boolean 
+     */
+    public function getRebaja()
+    {
+        return $this->rebaja;
+    }
+    /**
+     * @var \protecno\adminBundle\Entity\marca
+     */
+    private $marca;
+
+    /**
+     * @var \protecno\adminBundle\Entity\slider
+     */
+    private $imagen_uno;
+
+    /**
+     * @var \protecno\adminBundle\Entity\slider
+     */
+    private $imagen_dos;
+
+
+    /**
+     * Set marca
+     *
+     * @param \protecno\adminBundle\Entity\marca $marca
+     * @return auto
+     */
+    public function setMarca(\protecno\adminBundle\Entity\marca $marca = null)
+    {
+        $this->marca = $marca;
+
+        return $this;
+    }
+
+    /**
+     * Get marca
+     *
+     * @return \protecno\adminBundle\Entity\marca 
+     */
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    /**
+     * Set imagen_uno
+     *
+     * @param \protecno\adminBundle\Entity\slider $imagenUno
+     * @return auto
+     */
+    public function setImagenUno(\protecno\adminBundle\Entity\slider $imagenUno = null)
+    {
+        $this->imagen_uno = $imagenUno;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen_uno
+     *
+     * @return \protecno\adminBundle\Entity\slider 
+     */
+    public function getImagenUno()
+    {
+        return $this->imagen_uno;
+    }
+
+    /**
+     * Set imagen_dos
+     *
+     * @param \protecno\adminBundle\Entity\slider $imagenDos
+     * @return auto
+     */
+    public function setImagenDos(\protecno\adminBundle\Entity\slider $imagenDos = null)
+    {
+        $this->imagen_dos = $imagenDos;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen_dos
+     *
+     * @return \protecno\adminBundle\Entity\slider 
+     */
+    public function getImagenDos()
+    {
+        return $this->imagen_dos;
+    }
+
+    /**
+     * Add imagen_dos
+     *
+     * @param \protecno\adminBundle\Entity\slider $imagenDos
+     * @return auto
+     */
+    public function addImagenDo(\protecno\adminBundle\Entity\slider $imagenDos)
+    {
+        $this->imagen_dos[] = $imagenDos;
+
+        return $this;
+    }
+
+    /**
+     * Remove imagen_dos
+     *
+     * @param \protecno\adminBundle\Entity\slider $imagenDos
+     */
+    public function removeImagenDo(\protecno\adminBundle\Entity\slider $imagenDos)
+    {
+        $this->imagen_dos->removeElement($imagenDos);
+    }
 }
