@@ -1,0 +1,18 @@
+protecno\adminBundle\Entity\modelo:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '120'
+    manyToOne:
+        marca:
+            targetEntity: protecno\adminBundle\Entity\marca
+            inversedBy: auto 
+    lifecycleCallbacks: {  }

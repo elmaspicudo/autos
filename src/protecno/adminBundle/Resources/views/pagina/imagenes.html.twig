@@ -1,0 +1,1 @@
+{% if imagenes|length > 0 %}{% for imagen in imagenes %}{title:"{{imagen.titulo}}", value:"{{ asset('images/slider/'~ imagen.path)}}"},{% endfor %}{% endif %}	

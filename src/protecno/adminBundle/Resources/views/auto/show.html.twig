@@ -1,0 +1,151 @@
+{% extends '::base.html.twig' %}
+{% block placeholder -%}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><span>Newsletter</span></li>
+        </ol>
+             
+    </div>
+</div>
+{% endblock -%}
+{% block body -%}
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+<div class="main-box-body clearfix">
+    <h1>auto</h1>
+<div class="col-lg-4">
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Anio</th>
+                <td>{{ entity.anio }}</td>
+            </tr>
+            <tr>
+                <th>Codigo</th>
+                <td>{{ entity.codigo }}</td>
+            </tr>
+            <tr>
+                <th>Motor</th>
+                <td>{{ entity.motor }}</td>
+            </tr>
+            <tr>
+                <th>Km</th>
+                <td>{{ entity.km }}</td>
+            </tr>
+            <tr>
+                <th>Interior</th>
+                <td>{{ entity.interior }}</td>
+            </tr>
+            <tr>
+                <th>Exterior</th>
+                <td>{{ entity.exterior }}</td>
+            </tr>
+            <tr>
+                <th>Puertas</th>
+                <td>{{ entity.puertas }}</td>
+            </tr>
+            <tr>
+                <th>Llaves</th>
+                <td>{{ entity.llaves }}</td>
+            </tr>
+            <tr>
+                <th>Tenencia</th>
+                <td>{{ entity.tenencia }}</td>
+            </tr>
+            <tr>
+                <th>Verificacion</th>
+                <td>{{ entity.verificacion }}</td>
+            </tr>
+            <tr>
+                <th>Refacturacion</th>
+                <td>{{ entity.refacturacion }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ entity.precio }}</td>
+            </tr>
+            <tr>
+                <th>Precio_anterior</th>
+                <td>{{ entity.precioanterior }}</td>
+            </tr>
+            <tr>
+                <th>Rebaja</th>
+                <td>{{ entity.rebaja }}</td>
+            </tr>
+            <tr>
+                <th>Gastosreparacion</th>
+                <td>{{ entity.gastosReparacion }}</td>
+            </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ entity.observaciones }}</td>
+            </tr>
+            <tr>
+                <th>Visitas</th>
+                <td>{{ entity.visitas }}</td>
+            </tr>
+            <tr>
+                <th>Fcreacion</th>
+                <td>{{ entity.fCreacion|date('Y-m-d H:i:s') }}</td>
+            </tr>  
+        </tbody>
+    </table>
+
+            <a href="{{ path('admin_auto') }}" class="btn btn-warning">Regresar</a>     
+            <a href="{{ path('admin_auto_edit', { 'id': entity.id }) }}" class="btn btn-success">Editar</a>
+       {{ form(delete_form) }}
+     </ul>
+
+    </div>
+    <div class="col-lg-8">
+        <div id="gallery-photos-wrapper">
+            <ul id="gallery-photos" class="clearfix gallery-photos gallery-photos-hover ui-sortable">
+             {% for imagen in entity.imagenes %}
+                    <li id="recordsArray_1" class="col-md-2 col-sm-3 col-xs-6">
+                    <div class="photo-box" style="background-image: url('{{asset('images/slider/'~ imagen.path)}}');"></div>
+                    <a href="#" onclick="eliminar({{imagen.id}})" class="remove-photo-link">
+                    <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                    </li>
+            {% endfor %}
+            </ul>
+        </div>       
+    </div>       
+
+</div>
+</div>
+</div>      
+{% endblock %}
+{% block jscript -%}
+<script type="text/javascript">
+function eliminar(id){
+        $.ajax({
+            type: "POST",
+            url: "{{path('admin_slider_delete_auto')}}",
+            data: 'id='+id+'&auto={{entity.id}}',
+            dataType: "json",
+            success: function (data) {
+                if (data.sino) {
+                    alert('Se elimino la imgen correctamente');  
+                    location.reload();              
+                } else {
+                    alert('Ocurrio un error vuelve a intentarlo');
+                }
+            }
+
+        }); 
+
+    }
+</script>
+{% endblock %}
+

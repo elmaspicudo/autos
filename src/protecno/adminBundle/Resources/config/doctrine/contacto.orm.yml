@@ -1,0 +1,21 @@
+protecno\adminBundle\Entity\contacto:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        correo:
+            type: text
+        mapa:
+            type: text
+        contenido:
+            type: text
+            nullable: true
+        informacion:
+            type: text
+            nullable: true
+    lifecycleCallbacks: {  }

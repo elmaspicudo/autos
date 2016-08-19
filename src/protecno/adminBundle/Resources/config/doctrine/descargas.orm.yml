@@ -1,0 +1,30 @@
+protecno\adminBundle\Entity\descargas:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: '120'
+    manyToOne:
+        etiqueta:
+            targetEntity: protecno\adminBundle\Entity\etiquetasDescarga
+            inversedBy: descargas
+    manyToMany:
+      imagenes:
+        targetEntity: protecno\adminBundle\Entity\slider
+        joinTable:
+          name: descargas_imagen
+          joinColumns:
+            descargas_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            imagen_id:
+              referencedColumnName: id
+        cascade: ["persist"]
+    lifecycleCallbacks: {  }

@@ -1,0 +1,554 @@
+{% block header %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>{{aviso.titulo}}</title>
+    <meta name="description" content="{{aviso.descripcion}}">
+    <meta name="keyword" content="{{aviso.metatags}}">
+    {% endblock title %}
+    <meta name="author" content="Jose Miguel Pantaleon Martinez">
+    <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/app/dest/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/dest/vendors/colorbox/example3/colorbox.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/dest/rs-plugin/css/settings.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/dest/rs-plugin/css/responsive.css')}}">
+    <link rel="stylesheet" title="style" href="{{ asset('bundles/app/dest/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/dest/css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/dest/css/styleswitcher.css')}}">
+    
+    <link rel="alternate stylesheet" type="text/css" media="screen" title="color-8" href="{{ asset('bundles/app/dest/css/color-8.css')}}"/>
+    
+</head>
+<body>
+    
+    <div id="header">
+    
+        <div class="header-body">
+            <div class="container beta-relative">
+                <div class="pull-left" style="width: 282px;">
+                    <a href="{{ path('homepage')}}" id="logo" style="float: left;">
+                            <h1 style="">Tu logo</h1>
+                    </a>
+                    <span class="slogan">tu eslogan</span>
+                </div>
+                <div class="pull-right beta-components space-left ov">
+                    <div class="space10">&nbsp;</div>                       
+                </div>
+                <div class="clearfix"></div>
+            </div> <!-- .container -->
+        </div> <!-- .header-body -->
+        <div class="header-bottom color-div">
+            <div class="container">
+                <a class="visible-xs beta-menu-toggle pull-right" href="home_3.html#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
+                <div class="visible-xs clearfix"></div>
+                <nav class="main-menu">
+                    <ul class="l-inline ov">
+                        <li><a href="{{ path('homepage') }}">Inicio</a>
+                            
+                        </li>
+                        {% if paginas|length > 0 %}
+                            {% for pagina in paginas %}
+                                <li><a href="{{ path('interior', { 'id': pagina.id, 'nombre': pagina.nombre })}}">{{pagina.nombre}}</a>
+                            {% endfor %}
+                        {% endif %}
+
+                        </li>
+                        <li><a href="{{ path('tips') }}">FAQ´S</a>
+                            
+                        </li>
+                        <li><a href="{{ path('descargas') }}">Descargas</a>
+                            
+                        </li>
+                        <li><a href="{{ path('contacto') }}">Contacto</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+            </div> <!-- .container -->
+        </div> <!-- .header-bottom -->
+    </div> <!-- #header -->
+    {% endblock %}
+    {% block banner %}
+    <div class="rev-slider">
+    {% if baners|length > 0 %}
+                <div class="fullwidthbanner-container">
+                    <div class="fullwidthbanner">
+                        <div class="bannercontainer" >
+                            <div class="banner" >
+                                <ul>
+                                    {% for baner in baners %}
+                                        <!-- THE FIRST SLIDE -->
+                                        <li data-transition="boxfade" data-slotamount="20">
+                                             <img src="{{ asset('images/slider/'~ baner.imagenes.0.path)}}" alt="{{ baner.imagenes.0.subtitulo}}"/>
+                                           
+                                            <div class="caption lfr"  data-x="660" data-y="120" data-speed="800" data-start="2000" data-easing="easeOutBack">
+                                                <h1>{{baner.titulo}}</h1>
+                                            </div>
+                                            <div class="caption lfr"  data-x="660" data-y="160" data-speed="800" data-start="2400" data-easing="easeOutBack">
+                                                <h2>{{baner.subtitulo}}</h2>
+                                            </div>
+                                            <div class="caption lfr"  data-x="660" data-y="200" data-speed="800" data-start="2800" data-easing="easeOutBack">
+                                                <p>{{baner.contenido}}</p>
+                                            </div>                    
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tp-bannertimer"></div>
+                    </div>
+                </div>
+                <!--slider-->
+            {% endif %}
+    </div>
+    {% endblock %}
+    {% block contMenu %}
+    <div class="container">
+        <div id="content" class="space-top-none">
+            <div class="main-content">          
+
+                <div class="space10">&nbsp;</div>
+
+                <!--<div class="dg">
+                    <div class="col-3 wow fadeInDown">
+                        <div class="beta-banner">
+                            <img src="{{ asset('bundles/app/dest/images/banners/banner12.jpg')}}" alt="">
+                            <h2 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 100,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [30, 30, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >Oferta</h2>
+                            <p 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 400,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [80, 80, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >tu producto <br /> de oferta</p>
+                            <a 
+                                class="beta-banner-layer beta-btn text-left banner-color" 
+                                href="single_type_quote.html"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 300,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "bottom" : [25, 25, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >Mostrar</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3 wow fadeInDown">
+                        <div class="beta-banner beta-banner-white">
+                            <img src="{{ asset('bundles/app/dest/images/banners/banner13.jpg')}}" alt="">
+                            <h2 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 100,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [30, 30, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >Ofertas especiales</h2>
+                            <p 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 400,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [80, 80, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >su descripcion <br /> oferta</p>
+                            <a 
+                                class="beta-banner-layer beta-btn text-left beta-banner-white" 
+                                href="single_type_quote.html"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 300,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "bottom" : [25, 25, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >Mostrar</a>
+                        </div>
+                    </div>
+
+                    <div class="col-3 wow fadeInDown">
+                        <div class="beta-banner beta-banner-white">
+                            <img src="{{ asset('bundles/app/dest/images/banners/banner14.jpg')}}" alt="">
+                            <h2 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 100,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [30, 30, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >Venta nocturna</h2>
+                            <p 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 400,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [80, 80, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >los productos <br /> venta</p>
+                            <a 
+                                class="beta-banner-layer beta-btn text-left beta-banner-white" 
+                                href="single_type_quote.html"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 300,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "bottom" : [25, 25, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >mostrar</a>
+                        </div>
+                    </div>
+
+                    <div class="col-3 wow fadeInDown">
+                        <div class="beta-banner beta-banner-white">
+                            <img src="{{ asset('bundles/app/dest/images/banners/banner15.jpg')}}" alt="">
+                            <h2 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 100,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [30, 30, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >Nuevos</h2>
+                            <p 
+                                class="beta-banner-layer text-left"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 400,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "top" : [80, 80, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >mostramos los <br /> productos nuevos</p>
+                            <a 
+                                class="beta-banner-layer beta-btn text-left beta-banner-white" 
+                                href="single_type_quote.html"
+                                data-animo='{
+                                    "duration" : 1000,
+                                    "delay" : 300,
+                                    "easing" : "easeOutSine",
+                                    "template" : {
+                                        "opacity" : [0, 1],
+                                        "bottom" : [25, 25, "px"],
+                                        "left" : [-300, 70, "px"]
+                                    }
+                                }'
+                            >Read More</a>
+                        </div>
+                    </div>
+                </div> <!-- under slider 4 banners -->
+                
+                <div class="space60">&nbsp;</div>
+                <div class="row">
+                    <div class="col-lg-3 aside">
+                    {% block widget %}
+                        <div class="widget">
+                            <h3 class="widget-title">Categorias</h3>
+                            <div class="widget-body">
+                                <ul class="list-unstyled">
+                                {% if categorias|length > 0 %}  
+                                    {% for categoria in categorias %}
+                                        <li>
+                                            <label for="brands-abs"><span></span><a href="{{ path('categoria', { 'id': categoria.id,'name':categoria.descripcion })}}"> {{categoria.descripcion}}</a></label>
+                                        </li>
+                                    {% endfor %}        
+                                {% endif %}                         
+                                </ul>
+                            </div>
+                        </div> <!-- brands widget -->           
+                        <div class="widget">
+                            <h3 class="widget-title">Rango de precios</h3>
+                            <div class="widget-body">
+                                <div class="price-filter">
+                                <form action="{{path('buscar_rango')}}" method="POST">
+                                    <div id="price-filter-range"></div>  
+                                    <input type="hidden" id="rgMin" value="{{minmax.bajo}}">   
+                                    <input type="hidden" id="rgMax" value="{{minmax.alto}}">   
+                                    <input type="hidden" id="rgTodo" name="rgTodo">                               
+                                    <span class="pull-left" >Precio: <span id="price-filter-amount" style="text-align: right"></span></span>
+                                    <button type="submit" class="beta-btn primary pull-right">Buscar <i class="fa fa-chevron-right"></i></button>
+                                </form>    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div> <!-- price range widget -->
+                        <div class="widget">
+                            <h3 class="widget-title " id="dvMarcas" >Marcas<span class="caret"></span></h3>                            
+                            <div class="widget-body">
+                                <ul class="list-unstyled " id="ulMarcas" style="display:none">
+                                    {% for marca in marcas %}
+                                        <li>
+                                            <label for="brands-abs"><span></span><a href="{{ path('marca', { 'id': marca.id,'name':marca.descripcion|url_encode })}}"> {{marca.descripcion}}</a></label>
+                                        </li>
+                                    {% endfor %}                                    
+                                </ul>
+                            </div>
+                        </div> <!-- brands widget -->                       
+                    {% if ofertas|length > 0 %}             
+                                    
+                        <div class="widget">
+                            <h3 class="widget-title">Mas vendidos</h3>
+                            <div class="widget-body">
+                                <div class="beta-sales beta-lists">
+                                {% for oferta in ofertas %}
+                                    <div class="media beta-sales-item">
+                                        <a class="pull-left" href="{{ path('producto', { 'id': oferta.id,'name':oferta.modelo.nombre ~ oferta.anio })}}"><img src="{{ asset('images/slider/'~ oferta.imagenes.0.path)}}" alt="{{ oferta.imagenes.0.titulo}}"></a>
+                                        <div class="media-body">
+                                            {{oferta.modelo.nombre}} {{oferta.anio}}
+                                            <span class="beta-sales-price">${{oferta.precio}}</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div> <!-- best sellers widget -->
+                    {% endif %}
+                    {% endblock %}
+                    </div> <!-- .aside -->
+                    <div class="col-lg-9">
+                    {% block contenido %}
+                    {% endblock %}
+                    </div> 
+                </div> <!-- end section with sidebar and main content -->       
+
+
+            </div> <!-- .main-content -->
+        </div> <!-- #content -->
+    </div> <!-- .container -->
+{% endblock %}
+{% block contsnMenu %}
+{% endblock %}
+    {% block footer %}
+    <div id="footer" class="color-div">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h4 class="widget-title">Popular</h4>
+                        <div id="beta-instagram-feed"><div></div></div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="widget">
+                        <h4 class="widget-title">Information</h4>
+                        <div>
+                            <ul>
+                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> nombre</a></li>
+                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> telefono</a></li>
+                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> ventas</a></li>
+                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Tips</a></li>
+                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> fotos</a></li>
+                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> mas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                 <div class="col-sm-10">
+                    <div class="widget">
+                        <h4 class="widget-title">Contacto</h4>
+                        <div>
+                            <div class="contact-info">
+                                <i class="fa fa-map-marker"></i>
+                                <p>direccion del establecimiento</p>
+                                <p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto text.</p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h4 class="widget-title">Suscríbete al boletin</h4>
+                        <form action="#" method="post">
+                            <input type="email" id="elemail" name="your_email">
+                            <input type="checkbox" value="1" name="terminos" id="terminos" style="display:block;float: left;padding: 6px 12px;">
+                            <a href="javascript:void(0)" onclick="abrira()" role="button" class="btn"  data-toggle="myModal2">Acepto los terminos y condiciones</a>
+                            <button class="pull-right" id="btnNews" type="button">Subscribir <i class="fa fa-chevron-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- .row -->
+        </div> <!-- .container -->
+    </div> <!-- #footer -->
+    <div class="copyright">
+        <div class="container">
+            <p class="pull-left"><a href="javascript:void(0)" onclick="abrirb()" role="button" class="btn" data-toggle="myModal">Politicas de privacidad. (&copy;) 2014</a></p>
+            
+            <div class="clearfix"></div>
+        </div> <!-- .container -->
+    </div> <!-- .copyright -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-width="760" style="display: none;">>
+          <div class="modal-content"> 
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h2>Aviso de privacidad</h2>
+        </div>       
+            <div class="modal-body">
+               {{aviso.aviso|raw}}
+            </div>
+        
+      </div>
+    </div>
+    <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-width="760" style="display: none;">>
+        <div class="modal-content">
+         
+       <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h2>Terminos y condiciones</h2>
+        </div>
+          <div class="modal-body">
+                {{aviso.terminos|raw}}
+            </div>
+       
+      </div>
+    </div>
+
+    <!-- include js files -->
+    <script src="{{ asset('bundles/app/dest/js/jquery.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js')}}"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+     <script type="text/javascript">
+  // $( document ).ready(function() {
+   function abrira() {
+        jQuery('#myModal2').modal('show'); 
+   }
+   function abrirb() {
+      jQuery('#myModal').modal('show');
+   }
+      
+    // });     
+    </script>
+    <script src="{{ asset('bundles/app/dest/vendors/bxslider/jquery.bxslider.min.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/vendors/colorbox/jquery.colorbox-min.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/vendors/animo/Animo.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/vendors/dug/dug.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/js/scripts.min.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/js/waypoints.min.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/js/wow.min.js')}}"></script>
+    <script src="{{ asset('bundles/app/dest/js/styleswitcher.js')}}"></script>
+    <!--customjs-->
+    <script src="{{ asset('bundles/app/dest/js/custom2.js')}}"></script>
+    <script type="text/javascript">
+        jQuery( document ).ready(function() {
+   
+        jQuery( "#dvMarcas" ).click(function() {
+          jQuery( "#ulMarcas" ).toggle();
+        });
+
+        jQuery('#btnNews').click(function() {
+           //$( "#form_poliza_new" ).click();
+           var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+ 
+    //Se utiliza la funcion test() nativa de JavaScript
+    if(jQuery("#terminos").is(':checked')) {  
+           // alert("Está activado");  
+        } else {  
+            alert("Debes aceptar los terminos y condiciones"); 
+            return false; 
+        } 
+    if (regex.test(jQuery('#elemail').val().trim())) {
+        //alert('Correo validado');    
+           
+             jQuery.ajax({
+                        type: "POST",
+                        dataType: "Json",
+                        data:"&email="+jQuery('#elemail').val(),
+                        url: '{{path('guardarnews')}}',
+                        beforeSend: function() {
+                           jQuery('#preloader-formulario').show();             
+                        },
+                        success: function(response) {   
+                            jQuery('#preloader-formulario').hide();  
+                            //$( "#bodyPoliza" ).append(response ); 
+                            if(!response.funciono){
+                                alert("ocurrio un error por favor verifica tus datos");
+                            }                        
+                            
+                            alert("Gracias por registrarte");
+                                                                                 
+                             
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {}
+                    });
+        }
+            else {
+                alert('La direccion de correo no es valida');
+            }
+
+        });
+
+    });
+
+    </script>
+    {% block unscrip %}
+{% endblock %}
+</body>
+</html>
+{% endblock %}
+    

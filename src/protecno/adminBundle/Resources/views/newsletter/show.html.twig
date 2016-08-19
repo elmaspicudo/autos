@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+{% block placeholder -%}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><span>Newsletter</span></li>
+        </ol>
+             
+    </div>
+</div>
+{% endblock -%}
+{% block body -%}
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+<div class="main-box-body clearfix">
+    <h1>newsletter</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ entity.mail }}</td>
+            </tr>
+            <tr>
+                <th>Accept</th>
+                <td>{{ entity.accept }}</td>
+            </tr>
+            <tr>
+                <th>Baja</th>
+                <td>{{ entity.baja }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        
+        <a href="{{ path('admin_newsletter') }}" class="btn btn-warning">Regresar</a>
+        <a href="{{ path('admin_newsletter_edit', { 'id': entity.id }) }}" class="btn btn-success">Editar</a>
+    {{ form(delete_form) }}
+ </div>
+</div>
+</div>
+</div>      
+{% endblock %}

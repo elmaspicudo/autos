@@ -1,0 +1,48 @@
+   {% extends '::base_front.html.twig' %}
+
+    {% block contenido %}
+					{% if productos|length > 0 %}	
+						<div class="beta-products-list">
+							<h4>{{nombre}}</h4>
+							<div class="beta-products-details">
+								<p class="pull-left">{{productos|length}} productos </p>
+								<p class="pull-right">
+									
+								</p>
+								<div class="clearfix"></div>
+							</div>
+
+							<div class="row">
+							{% for oferta in productos %}
+								<div class="col-lg-4 itemprod">
+									<div class="ribbon-wrapper"><div class="ribbon sale">Oferta</div></div> 
+									<div class="single-item">
+										<div class="single-item-header">
+											<a href="{{ path('producto', { 'id': oferta.id,'name':oferta.modelo.nombre ~ oferta.anio })}}"><img src="{{asset('images/slider/'~oferta.imagenes.0.path)}}" alt="{{ oferta.imagenes.0.titulo}}" class="prodimg"></a>
+										</div>
+										<div class="single-item-body">
+											<p class="single-item-title">{{oferta.modelo.nombre}} {{oferta.anio}}</p>
+											<p class="single-item-price">
+												<span class="flash-del">${{oferta.precio_anterior}}</span>
+												<span class="flash-sale">${{oferta.precio}}</span>
+											</p>
+											
+										</div>
+										<div class="single-item-caption">
+											
+											<a class="beta-btn primary" href="{{ path('producto', { 'id': oferta.id,'name':oferta.modelo.nombre ~ oferta.anio })}}">Detalles <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}						
+								
+							</div>
+
+						</div> <!-- .beta-products-list -->
+						{% else %}
+						<h1>No hay productos en esta categoria</h1>
+						{% endif %}
+						<div class="space50">&nbsp;</div>
+						
+  {% endblock %}

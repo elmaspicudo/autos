@@ -1,0 +1,39 @@
+ {% extends '::base_front.html.twig' %}
+{% block banner %}
+{% endblock %}
+{% block contMenu %}
+{% endblock %}
+{% block contsnMenu %}
+<div class="container">
+				<div class="content space-top-none space-bottom-none">
+				<div class="main-content">
+				<div class="space20">&nbsp;</div>
+				<h2 class="text-center wow fadeInDown animated" style="visibility: visible;">Estos son algunos tips</h2>
+				<div class="space20">&nbsp;</div>
+
+				<div class="row">
+				{% if tipss|length > 0 %}
+				   {% for tips in tipss %}  
+					<div class="col-sm-3 ">
+						<div class="beta-person beta-person-full">
+							<div class="bets-img-hover"><img src="{{ asset('images/slider/'~ tips.imagenes.0.path)}}" alt="{{ tips.imagenes.0.titulo}}"></div>
+							<div class="beta-person-body text-center bg-gray">
+								<div class="indicator-top"></div>
+								<h5>{{tips.nombre}}</h5>
+								<p class="font-large">{{tips.titulo}}</p>
+								<p>{{tips.contenido}}</p>
+								
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+                      
+                {% endif %}
+					
+					<div class="space20">&nbsp;</div>
+				</div>
+				</div>
+				</div>
+				</div>
+
+{% endblock %}

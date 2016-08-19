@@ -1,0 +1,126 @@
+ {% extends '::base_front.html.twig' %}
+{% block banner %}
+{% endblock %}
+{% block contMenu %}
+{% endblock %}
+{% block contsnMenu %}
+<div class="container">
+		<div id="content">
+			<div class="beta-filter-container22 round-portfolio">
+			<div class="portfolio-filters">
+				<div class="beta-filter text-right">
+				{% if etiquetas|length > 0 %}
+					<ul id='filters'>
+							<li class="active"><a href="#" data-filter="*">Ver todo</a></li>
+						{% for etiqueta in etiquetas %}                            
+                            <li><a href="#" data-filter=".{{etiqueta.id}}" >{{etiqueta.nombre}}</a></li>
+                           
+                        {% endfor %}
+                        </ul>
+                {% endif %}
+				</div>
+			<div class="portfolioitems-holder beta-overflow">
+			{% if descargas|length > 0 %}
+				<ul id="portfolioitems" class="isotope beta-filter-body portfolio-page beta-width">
+				{% for descarga in descargas %}
+					<li class="all {{descarga.etiqueta.id}} work-item">
+						<div class="work-item-over">
+							<p class="work-item-actions">
+								<a class="colorbox" href="{{ asset('images/slider/'~ descarga.imagenes.0.path)}}"><i class="fa fa-search"></i></a>
+								
+							</p>
+						</div>
+						<img src="{{ asset('images/slider/'~ descarga.imagenes.0.path)}}" alt="">
+					</li>
+					
+				 {% endfor %}
+                        </ul>
+                {% endif %}
+			</div>
+			</div>
+			</div>
+			<div class="clearfix"></div>
+		</div> <!-- #content -->
+	</div> <!-- .container -->
+{% endblock %}
+	{% block footer %}
+	<div id="footer" class="color-div">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="widget">
+						<h4 class="widget-title">Popular</h4>
+						<div id="beta-instagram-feed"><div></div></div>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<div class="widget">
+						<h4 class="widget-title">Information</h4>
+						<div>
+							<ul>
+								<li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> nombre</a></li>
+								<li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> telefono</a></li>
+								<li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> ventas</a></li>
+								<li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Tips</a></li>
+								<li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> fotos</a></li>
+								<li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> mas</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+				 <div class="col-sm-10">
+					<div class="widget">
+						<h4 class="widget-title">Contacto</h4>
+						<div>
+							<div class="contact-info">
+								<i class="fa fa-map-marker"></i>
+								<p>direccion del establecimiento</p>
+								<p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto text.</p>
+							</div>
+						</div>
+					</div>
+				  </div>
+				</div>
+				<div class="col-sm-3">
+					<div class="widget">
+						<h4 class="widget-title">Suscrivete al boletin</h4>
+						<form action="#" method="post">
+							<input type="email" name="your_email">
+							<button class="pull-right" type="submit">Subscribir <i class="fa fa-chevron-right"></i></button>
+						</form>
+					</div>
+				</div>
+			</div> <!-- .row -->
+		</div> <!-- .container -->
+	</div> <!-- #footer -->
+	<div class="copyright">
+		<div class="container">
+			<p class="pull-left">Politicas de privacidad. (&copy;) 2014</p>
+			<p class="pull-right pay-options">
+				<a href="home_3.html#"><img src="{{ asset('bundles/app/dest/images/pay/master.jpg')}}" alt="" /></a>
+				<a href="home_3.html#"><img src="{{ asset('bundles/app/dest/images/pay/pay.jpg')}}" alt="" /></a>
+				<a href="home_3.html#"><img src="{{ asset('bundles/app/dest/images/pay/visa.jpg')}}" alt="" /></a>
+				<a href="home_3.html#"><img src="{{ asset('bundles/app/dest/images/pay/paypal.jpg')}}" alt="" /></a>
+			</p>
+			<div class="clearfix"></div>
+		</div> <!-- .container -->
+	</div> <!-- .copyright -->
+	
+
+	<!-- include js files -->
+	<script src="{{ asset('bundles/app/dest/js/jquery.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/js/jquery.isotope.min.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/js/portfolio.js')}}"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script src="{{ asset('bundles/app/dest/vendors/bxslider/jquery.bxslider.min.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/vendors/colorbox/jquery.colorbox-min.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/vendors/animo/Animo.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/vendors/dug/dug.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/js/scripts.min.js')}}"></script>
+	<script src="{{ asset('bundles/app/dest/js/styleswitcher.js')}}"></script>
+	<!--customjs-->
+</body>
+</html>
+{% endblock %}

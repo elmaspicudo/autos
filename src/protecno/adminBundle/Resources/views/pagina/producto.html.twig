@@ -1,0 +1,125 @@
+   {% extends '::base_front.html.twig' %}
+   {% block banner %}
+{% endblock %}
+{% block contMenu %}
+{% endblock %}
+{% block contsnMenu %}
+<div class="container">
+		<div id="content2">
+			
+			<div class="row">
+				<div class="col-sm-7">
+					<div class="beta-slider">							
+						<div class="beta-slider-items">
+						{% if producto.imagenes|length > 0 %}	
+							{% for imagen in producto.imagenes %}
+								<img src="{{asset('images/slider/'~imagen.path)}}" alt="{{imagen.titulo|default('http://seminuevosyaccidentados.com.mx/')}}" style="height: 562px">								
+							{% endfor %}
+						{% endif %}
+						</div>
+						
+						<div class="text-center">
+							<div class="beta-pager-gallery port-gallery">
+							{% if producto.imagenes|length > 0 %}	
+							{% set foo = 0 %}
+								{% for imagen in producto.imagenes %}
+							  		<a data-slide-index="{{foo}}" href=""><img src="{{asset('images/slider/'~imagen.path)}}" alt="{{imagen.titulo|default('http://seminuevosyaccidentados.com.mx/')}}" /></a>
+							  		{% set foo = foo + 1 %}
+							  	{% endfor %}
+							{% endif %}
+							 
+							</div>
+						</div>
+					</div>
+				
+				</div>
+				<div class="col-sm-5">
+					<h5>{{producto.modelo.nombre}} {{producto.anio}}</h5>
+					<p>{{producto.observaciones}}</p>
+					<div class="space20">&nbsp;</div>
+					<h5>Detalles</h5>
+					<table class="table portfolio-table">
+						<tr>
+							<th>Marca:</th>
+							<td>{{producto.modelo.marca.descripcion}}</td>
+						</tr>
+						<tr>
+							<th>Motor:</th>
+							<td>{{producto.motor}}</td>
+						</tr>
+						<tr>
+							<th>Precio:</th>
+							<td>{{producto.precio}}</td>
+						</tr>
+						<tr>
+							<th>Kilometros:</th>
+							<td>{{producto.km}}</td>
+						</tr>
+						<tr>
+							<th>Interior:</th>
+							<td>{{producto.interior}}</td>
+						</tr>
+						<tr>
+							<th>Exterior:</th>
+							<td>{{producto.exterior}}</td>
+						</tr>
+						<tr>
+							<th>Codigo:</th>
+							<td>{{producto.codigo}}</td>
+						</tr>
+						<tr>
+							<th>Puertas:</th>
+							<td>{{producto.puertas}}</td>
+						</tr>
+						<tr>
+							<th>Llaves:</th>
+							<td>{{producto.llaves}}</td>
+						</tr>
+						<tr>
+							<th>Tenencia:</th>
+							<td>{{producto.tenencia}}</td>
+						</tr>
+						<tr>
+							<th>Verificacion:</th>
+							<td>{{producto.verificacion}}</td>
+						</tr>
+						<tr>
+							<th>Refacturacion:</th>
+							<td>{{producto.refacturacion}}</td>
+						</tr>
+						<tr>
+							<th>Gastos de reparacion:</th>
+							<td>{{producto.gastosReparacion}}</td>
+						</tr>    
+					</table>
+				</div>
+			</div>
+			<div class="space70">&nbsp;</div>
+
+			<h2>Productos relacionados</h2>
+			<div class="space30">&nbsp;</div>
+			<div class="row">
+			{% if productosRelated|length > 0 %}
+				{% for oferta in productosRelated %}
+					<div class="col-sm-4">
+						<div class="work-item beta-related-port">
+						<div class="work-item-over">
+							<p class="work-item-actions">
+								<a class="colorbox" href="{{asset('images/slider/'~ oferta.imagenes.0.path)}}"><i class="fa fa-search"></i></a>
+								<a href="{{ path('producto', { 'id': oferta.id,'name':oferta.modelo.nombre ~ oferta.anio })}}"><i class="fa fa-link"></i></a>
+							</p>
+						</div>
+						<img src="{{asset('images/slider/'~oferta.imagenes.0.path)}}" alt="{{ oferta.imagenes.0.titulo|default('http://seminuevosyaccidentados.com.mx/')}}">
+						</div>
+						<div class="space20">&nbsp;</div>
+						<h5 class="other-title"><a href="{{ path('producto', { 'id': oferta.id,'name':oferta.modelo.nombre ~ oferta.anio })}}">
+							{{oferta.modelo.nombre}} {{oferta.anio}}
+						</a></h5>
+					</div>
+				{% endfor %}
+			{% endif %}
+			</div>
+		</div> <!-- #content -->
+	</div> <!-- .container -->
+
+	{% endblock %}

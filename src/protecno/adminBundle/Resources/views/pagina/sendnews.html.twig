@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script src="{{ asset('bundles/app/dest/js/jquery.js')}}"></script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+      function enviar(){
+        var idsiguiente=document.getElementById('hdnSiguiente').value;
+        var totales=document.getElementById('hdntotal').value;
+        if(idsiguiente < totales){
+       // var idCampana=document.getElementById('hdnCampana'+idsiguiente).value;
+        var pagina=document.getElementById('hdnpagina').value;
+
+         $.post("{{ path('campana_sendajax') }}" ,{ pagina: pagina,idsiguiente:idsiguiente }, function(data) {             
+               document.getElementById('hdnpagina').value=data.pagina;
+               document.getElementById('hdnSiguiente').value=data.campanasig;
+               //$('#contenido').html('Enviandos: '+ data.totalenvios + ' de la campana '+ idCampana+ '<br>');
+               $("#contenido").append('<p>Enviados: '+ data.totalenvios + '</p>');
+               enviar();
+             }, "json") 
+
+             }      
+      }
+      enviar();
+    })
+    </script>
+  </head>
+  <body>
+    <div id="formulario">
+      {{entity | raw }}
+      <input type="hidden" id="hdnSiguiente" value="0" >
+    </div>
+    <div id="contenido">
+    </div>
+
+  </body>
+ </html>

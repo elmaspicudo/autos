@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+{% block placeholder -%}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><span>Categorias</span></li>
+        </ol>
+        <div class="clearfix">
+            <h1 class="pull-left">Categorias</h1>
+            <div class="pull-right top-page-ui">
+                <a href="{{ path('admin_categorias_new')}}" class="btn btn-primary pull-right">
+                    <i class="fa fa-plus-circle fa-lg"></i> Agregar Categoria
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock -%}
+{% block body -%}
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+<div class="main-box-body clearfix">
+<div class="table-responsive">
+<table class="table user-list table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Action</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_categorias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.descripcion }}</td>
+                <td>{{ entity.action }}</td>
+                <td>
+                        <a href="{{ path('admin_categorias_show', { 'id': entity.id }) }}"class="btn btn-primary">ver</a>
+                        <a href="{{ path('admin_categorias_edit', { 'id': entity.id }) }}" class="btn btn-success">Editar</a>
+                    </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+</div>
+</div>
+</div>
+</div>
+
+       
+    {% endblock %}

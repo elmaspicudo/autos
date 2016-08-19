@@ -1,0 +1,18 @@
+protecno\adminBundle\Entity\newsletter:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        mail:
+            type: string
+            length: '120'
+        accept:
+            type: boolean
+        baja:
+            type: boolean
+    lifecycleCallbacks: {  }

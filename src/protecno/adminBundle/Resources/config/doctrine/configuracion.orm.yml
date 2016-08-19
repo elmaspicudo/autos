@@ -1,0 +1,22 @@
+protecno\adminBundle\Entity\configuracion:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: '120'
+        descripcion:
+            type: text
+        metatags:
+            type: text
+        terminos:
+            type: text
+        aviso:
+            type: text
+    lifecycleCallbacks: {  }

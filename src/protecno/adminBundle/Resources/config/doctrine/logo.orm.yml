@@ -1,0 +1,29 @@
+protecno\adminBundle\Entity\logo:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '30'
+        eslogan:
+            type: string
+            length: '50'
+    manyToMany:
+      logo:
+        targetEntity: protecno\adminBundle\Entity\slider
+        joinTable:
+          name: logo_imagen
+          joinColumns:
+            auto_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            imagen_id:
+              referencedColumnName: id
+        cascade: ["persist"]               
+    lifecycleCallbacks: {  }

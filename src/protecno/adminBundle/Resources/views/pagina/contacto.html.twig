@@ -1,0 +1,97 @@
+ {% extends '::base_front.html.twig' %}
+{% block banner %}
+{% endblock %}
+{% block contMenu %}
+{% endblock %}
+{% block contsnMenu %}
+<div class="beta-map">
+		
+		<div class="abs-fullwidth beta-map wow flipInX"><iframe src="{{entity.mapa}}" ></iframe></div>
+	</div>
+	<div class="container">
+		<div id="content" class="space-top-none">
+			
+			<div class="space50">&nbsp;</div>
+			<div class="row">
+				<div class="col-sm-8">
+					<h2>Formulario de Contacto</h2>
+					<div class="space20">&nbsp;</div>
+					<p>{{entity.contenido|raw}}</p>
+					<div class="space20">&nbsp;</div>
+					<form action="" id="frmContact" method="post" class="contact-form">	
+						<div class="form-block">
+							<input name="name" type="text" id="name" placeholder="Nombre (required)">
+						</div>
+						<div class="form-block">
+							<input name="email" type="email" id="email" placeholder="Email (required)">
+						</div>
+						<div class="form-block">
+							<input name="subject" type="text" placeholder="Asunto">
+						</div>
+						<div class="form-block">
+							<textarea name="message" placeholder="Mensaje"></textarea>
+						</div>
+						<div class="form-block">
+							<button type="button" id="btnMensaje" class="beta-btn primary">Enviar Mensaje <i class="fa fa-chevron-right"></i></button>
+						</div>
+					</form>
+				</div>
+				<div class="col-sm-4">
+					<h2>Informacion</h2>
+					<div class="space20">&nbsp;</div>
+
+					{{entity.informacion|raw}}
+				</div>
+			</div>
+		</div> <!-- #content -->
+	</div> <!-- .container -->
+
+{% endblock %}
+{% block unscrip %}
+<script type="text/javascript">
+        jQuery( document ).ready(function() {
+        jQuery('#btnMensaje').click(function() {
+           //$( "#form_poliza_new" ).click();
+           var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+ 	if(jQuery("#name").val().trim()!='') {  
+           // alert("Está activado");  
+        } else {  
+            alert("Debes ingresar un nombre"); 
+            return false; 
+        } 
+    //Se utiliza la funcion test() nativa de JavaScript
+      if (regex.test(jQuery('#email').val().trim())) {
+        //alert('Correo validado');    
+           
+             jQuery.ajax({
+                        type: "POST",
+                        dataType: "Json",
+                        data:jQuery('#frmContact').serialize(),
+                        url: '{{path('contact')}}',
+                        beforeSend: function() {
+                           jQuery('#preloader-formulario').show();             
+                        },
+                        success: function(response) {   
+                            jQuery('#preloader-formulario').hide();  
+                            //$( "#bodyPoliza" ).append(response ); 
+                            if(!response.funciono){
+                                alert("ocurrio un error por favor verifica tus datos");
+                            }                        
+                            
+                            alert("Gracias por contactarno en breve te responderemos");
+                                                                                 
+                             
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {}
+                    });
+        }
+            else {
+                alert('La direccion de correo no es valida');
+            }
+
+        });
+
+    });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends '::base.html.twig' %}
+{% block placeholder -%}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><span>Autos</span></li>
+        </ol>
+             
+    </div>
+</div>
+{% endblock -%}
+{% block body -%}
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+<div class="main-box-body clearfix">
+{{ form_errors(edit_form) }}
+{{ form_start(edit_form, {'attr': {'class': 'form_transaccion_edit'}}) }}    
+    <div class="row">
+        <h1>Imagenes</h1>
+         <div class="col-lg-12">
+            <div id="gallery-photos-wrapper">
+                <ul id="gallery-photos" class="clearfix gallery-photos gallery-photos-hover ui-sortable">
+                 {% for imagen in entity.imagenes %}
+                        <li id="recordsArray_1" class="col-md-2 col-sm-3 col-xs-6">
+                        <div class="photo-box" style="background-image: url('{{asset('images/slider/'~ imagen.path)}}');"></div>
+                        <a href="#" onclick="eliminar({{imagen.id}})" class="remove-photo-link">
+                        <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                        </a>
+                        </li>
+                {% endfor %}
+                </ul>
+            </div>       
+        </div>       
+         <a class="btn btn-success" id="agregar_campo_file" href="#">Agregar imagen</a>
+        <div class="col-lg-12" id="ctnImagenes">
+            {{ form_widget(edit_form.files) }}
+        </div>
+    </div>
+    <div class="row">
+        {{ form_rest(edit_form) }}
+
+    </div>
+
+    <div class="row">
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <button class="btn btn-default" type="reset">Limpiar</button>
+            <a class="btn btn-warning" href="{{ path('admin_auto') }}">Regresar</a>
+           
+    </div>
+    {{ form_end(edit_form) }}    
+    <div class="row">
+    {{ form(delete_form) }}    
+    </div>             
+ </div>
+</div>
+</div>
+    
+{% endblock %}
+{% block jscript %}
+<script type="text/javascript">
+function eliminar(id){
+        $.ajax({
+            type: "POST",
+            url: "{{path('admin_slider_delete_auto')}}",
+            data: 'id='+id+'&auto={{entity.id}}',
+            dataType: "json",
+            success: function (data) {
+                if (data.sino) {
+                    alert('Se elimino la imgen correctamente');  
+                    location.reload();              
+                } else {
+                    alert('Ocurrio un error vuelve a intentarlo');
+                }
+            }
+
+        }); 
+
+    }
+$( document ).ready(function() {
+var i=1;
+var y=0;
+$('#agregar_campo_file').click(function(e) {
+        e.preventDefault();
+        var files = jQuery('#protecno_adminbundle_auto_files');
+        var newWidget = files.attr('data-prototype');        
+        newWidget = newWidget.replace('__name__label__', 'Imagen '+i);
+        newWidget = newWidget.replace(/__name__/g, y);
+        $('#ctnImagenes').append(newWidget);
+        i++;
+        y++;
+        return false;
+    });
+})
+</script>
+{% endblock %}

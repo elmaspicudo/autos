@@ -1,0 +1,14 @@
+ {% extends '::base_front.html.twig' %}
+{% block banner %}
+{% endblock %}
+{% block contMenu %}
+{% endblock %}
+{% block contsnMenu %}
+<div class="container">
+				<div class="row">
+					{{entity.contenido|raw}}
+				</div>	
+			</div>
+
+	{% endblock %}
+

@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+{% block placeholder -%}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><span>Autos</span></li>
+        </ol>
+        <div class="clearfix">
+            <h1 class="pull-left">Autos</h1>
+            <div class="pull-right top-page-ui">
+                <a href="{{ path('admin_auto_new')}}" class="btn btn-primary pull-right">
+                    <i class="fa fa-plus-circle fa-lg"></i> Agregar auto
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock -%}
+{% block body -%}
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+<div class="main-box-body clearfix">
+<div class="table-responsive">
+<table class="table user-list table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Anio</th>
+                <th>Codigo</th>
+                <th>Motor</th>
+                <th>Km</th>
+                <th>Interior</th>
+                <th>Exterior</th>
+                <th>Puertas</th>
+                <th>Llaves</th>                
+                <th>Visitas</th>
+                <th>Fcreacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_auto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.anio }}</td>
+                <td>{{ entity.codigo }}</td>
+                <td>{{ entity.motor }}</td>
+                <td>{{ entity.km }}</td>
+                <td>{{ entity.interior }}</td>
+                <td>{{ entity.exterior }}</td>
+                <td>{{ entity.puertas }}</td>
+                <td>{{ entity.llaves }}</td>                
+                <td>{{ entity.visitas }}</td>
+                <td>{% if entity.fCreacion %}{{ entity.fCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                        <a href="{{ path('admin_auto_show', { 'id': entity.id }) }}" class="btn btn-primary">ver</a>
+                        <a href="{{ path('admin_auto_edit', { 'id': entity.id }) }}" class="btn btn-success">Editar</a>
+                    </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+</div>
+</div>
+</div>
+</div>
+
+        
+    {% endblock %}

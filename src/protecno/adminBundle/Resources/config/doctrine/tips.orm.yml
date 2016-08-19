@@ -1,0 +1,32 @@
+protecno\adminBundle\Entity\tips:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '60'
+        titulo:
+            type: string
+            length: '60'
+        contenido:
+            type: string
+            length: 255
+    manyToMany:
+      imagenes:
+        targetEntity: protecno\adminBundle\Entity\slider
+        joinTable:
+          name: tips_imagen
+          joinColumns:
+            tips_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            imagen_id:
+              referencedColumnName: id
+        cascade: ["persist"]
+    lifecycleCallbacks: {  }

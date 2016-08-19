@@ -1,0 +1,97 @@
+protecno\adminBundle\Entity\auto:
+    type: entity
+    table: null
+    repositoryClass: protecno\adminBundle\Entity\autoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        anio:
+            type: string
+            length: '4'
+        codigo:
+            type: string
+            length: '20'
+        motor:
+            type: string
+            length: '20'
+        km:
+            type: string
+            length: '12'
+        interior:
+            type: string
+            length: '50'
+        exterior:
+            type: string
+            length: '50'
+        puertas:
+            type: integer
+        llaves:
+            type: string
+            length: '4'
+        tenencia:
+            type: string
+            length: '20'
+        verificacion:
+            type: string
+            length: '20'
+        refacturacion:
+            type: string
+            length: '4'
+        precio:
+            type: decimal
+            length: '20'
+        precio_anterior:
+            type: string
+            length: '20'
+            nullable:     true
+        rebaja:
+            type: boolean  
+            nullable:     true          
+        gastosReparacion:
+            type: string
+            length: '20'
+        observaciones:
+            type: text    
+        visitas:
+            type: integer
+            nullable: true
+        fCreacion:
+            type: datetime
+            nullable: true
+    manyToOne:
+        modelo:
+            targetEntity: protecno\adminBundle\Entity\modelo
+            inversedBy: auto 
+    manyToMany:
+      imagenes:
+        targetEntity: protecno\adminBundle\Entity\slider
+        joinTable:
+          name: auto_imagen
+          joinColumns:
+            auto_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            imagen_id:
+              referencedColumnName: id
+        cascade: ["persist","remove"]
+        onDelete: CASCADE
+        options:
+            cascade:
+            remove: true
+            persist: true               
+      categoria:
+            targetEntity: protecno\adminBundle\Entity\categorias
+            joinTable:
+                name: auto_categoria
+                joinColumns:
+                    auto_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    categoria_id:
+                        referencedColumnName: id
+      
+    lifecycleCallbacks: {  }

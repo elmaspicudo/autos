@@ -1,0 +1,35 @@
+protecno\adminBundle\Entity\galeria:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: '120'
+        subtitulo:
+            type: string
+            length: '120'
+        contenido:
+            type: string
+            length: 255
+        orden:
+            type: integer
+    manyToMany:
+      imagenes:
+        targetEntity: protecno\adminBundle\Entity\slider
+        joinTable:
+          name: galeria_imagen
+          joinColumns:
+            galeria_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            imagen_id:
+              referencedColumnName: id
+        cascade: ["persist"]
+    lifecycleCallbacks: {  }
+     

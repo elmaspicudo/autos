@@ -1,0 +1,18 @@
+{% block form_row %}
+{% spaceless %}
+    {% set class='form-group' %}
+    {% set col='col-lg-6' %}
+    
+	<div class="{{col}}" >
+	    <div {{class}} >
+	    	<div class="input-group">
+	    		<span class="input-group-btn">
+		        	{{ form_label(form, label|default(null), { 'label_attr': {'class': 'btn btn-primary'} }) }}
+		        </span>
+		        {{ form_widget(form,{'attr': {'class': 'form-control'}}) }}		        
+		    </div>
+		    <span class="help-block"><i class="icon-remove-sign"></i>{{ form_errors(form) }}</span>
+	    </div>
+	</div>
+{% endspaceless %}
+{% endblock form_row %}

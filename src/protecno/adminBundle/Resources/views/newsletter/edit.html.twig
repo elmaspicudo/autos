@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+{% block placeholder -%}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><span>Newsletter</span></li>
+        </ol>
+             
+    </div>
+</div>
+{% endblock -%}
+{% block body -%}
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+<div class="main-box-body clearfix">
+    <h1>newsletter edit</h1>
+
+    {{ form(edit_form) }}
+
+        
+        <a href="{{ path('admin_newsletter') }}" class="btn btn-warning">Regresar</a>
+    {{ form(delete_form) }}
+ </div>
+</div>
+</div>
+</div>      
+{% endblock %}

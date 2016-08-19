@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+{% block placeholder -%}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><span>Newsletter</span></li>
+        </ol>
+             
+    </div>
+</div>
+{% endblock -%}
+{% block body -%}
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+<div class="main-box-body clearfix">
+    <h1>galeria</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ entity.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Subtitulo</th>
+                <td>{{ entity.subtitulo }}</td>
+            </tr>
+            <tr>
+                <th>Contenido</th>
+                <td>{{ entity.contenido }}</td>
+            </tr>
+            <tr>
+                <th>Orden</th>
+                <td>{{ entity.orden }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        
+        <a href="{{ path('admin_galeria') }}" class="btn btn-warning">Regresar</a>
+        <a href="{{ path('admin_galeria_edit', { 'id': entity.id }) }}" class="btn btn-success">Editar</a>
+    {{ form(delete_form) }}
+ </div>
+</div>
+</div>
+</div>      
+{% endblock %}
